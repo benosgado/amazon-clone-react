@@ -10,7 +10,7 @@ function Products() {
       id: 121,
       title: "Vans Men's Classic Short Sleeve T-Shirt",
       price: 20.72,
-      rating: 4,
+      rating: 4.5,
       image:
         "https://images-na.ssl-images-amazon.com/images/I/711YeFGUlfL._AC_UY879_.jpg",
     },
@@ -26,7 +26,7 @@ function Products() {
       id: 123,
       title: "Eastpak Tranverz S Suitcase, 51 cm, 42 L, Black",
       price: 121.01,
-      rating: 3,
+      rating: 3.5,
       image: "https://m.media-amazon.com/images/I/71-09J9aqUL._AC_UY218_.jpg",
     },
     {
@@ -49,8 +49,9 @@ function Products() {
 
   return (
     <div style={style}>
-      {Products.map((product) => (
+      {Products.map((product, key) => (
         <Product
+          key={key}
           id={product.id}
           title={product.title}
           price={product.price}
