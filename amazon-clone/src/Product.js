@@ -1,21 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
 import "./Product.css";
-
-const labels = {
-  0.5: "Useless",
-  1: "Useless+",
-  1.5: "Poor",
-  2: "Poor+",
-  2.5: "Ok",
-  3: "Ok+",
-  3.5: "Good",
-  4: "Good+",
-  4.5: "Excellent",
-  5: "Excellent+",
-};
+import { useStateValue } from "./StateProvider";
 
 const useStyles = makeStyles({
   root: {
@@ -26,9 +13,24 @@ const useStyles = makeStyles({
 });
 
 function Product({ id, title, price, rating, image }) {
-  const [value, setValue] = React.useState(rating);
-  const [hover, setHover] = React.useState(-1);
   const classes = useStyles();
+
+  const [{}, dispatch] = useStateValue();
+
+  const addToBasket = () => {
+    // Add item to basket...
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        id: id,
+        title: title,
+        price: price,
+        rating: rating,
+        image: image,
+      },
+    });
+  };
+
   return (
     <div className="product">
       <div className="product__info">
@@ -44,26 +46,13 @@ function Product({ id, title, price, rating, image }) {
               return <p>🌟</p>;
             })} */}
           <div className={classes.root}>
-            <Rating
-              name="hover-feedback"
-              value={rating}
-              precision={0.5}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
-              onChangeActive={(event, newHover) => {
-                setHover(newHover);
-              }}
-            />
-            {value !== null && (
-              <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
-            )}
+            <Rating name="read-only" value={rating} readOnly />
           </div>
         </div>
       </div>
 
       <img src={image} alt="" />
-      <button>Add to basket</button>
+      <button onClick={addToBasket}>Add to basket</button>
     </div>
   );
 }
