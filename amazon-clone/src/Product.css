@@ -1,11 +1,9 @@
 .product {
-  align-content: flex-start;
-  justify-content: flex-end;
   max-height: 400px;
   min-width: 100px;
   margin: 10px;
   padding: 20px;
-  width: 100%;
+  width: 25%;
   background-color: white;
   z-index: 1;
 }

@@ -1,10 +1,8 @@
 import React from "react";
 import Product from "./Product";
+import "./Products.css";
 
 function Products() {
-  let style = {
-    display: "flex",
-  };
   let Products = [
     {
       id: 121,
@@ -38,17 +36,40 @@ function Products() {
     },
     {
       id: 125,
-      title:
-        "Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019) Ultra HD Smart TV with HDR and Alexa Compatibility",
+      title: "Samsung QN82Q60RAFXZA Flat 82-Inch QLED 4K Q60 Series (2019)",
       price: 1997.99,
       rating: 5,
       image:
         "https://images-na.ssl-images-amazon.com/images/I/91uohwV%2Bk3L._AC_SX679_.jpg",
     },
+    {
+      id: 126,
+      title:
+        "Homgeek, 1450W CACAGOO Countertop Blender for shakes and smoothies with 68 Oz BPA Free Tritan Container",
+      price: 89.99,
+      rating: 5,
+      image: "https://images-na.ssl-images-amazon.com/images/I/61nuWxLecdL._AC_SX679_.jpg",
+    },
+    {
+      id: 127,
+      title: "Home Basics Tin, Turquoise Cookie Jar",
+      price: 17.0,
+      rating: 4.5,
+      image:
+        "https://images-na.ssl-images-amazon.com/images/I/61Ex4y%2BXfbL._AC_SX679_.jpg",
+    },
+    {
+      id: 128,
+      title: "Oggi Jumbo 9-1/2-Inch Ceramic Cookie Jar, White",
+      price: 25.99,
+      rating: 4,
+      image:
+        "https://images-na.ssl-images-amazon.com/images/I/81S7S01-e2L._AC_SX679_.jpg",
+    },
   ];
 
   return (
-    <div style={style}>
+    <div className="products__row">
       {Products.map((product, key) => (
         <Product
           key={key}
